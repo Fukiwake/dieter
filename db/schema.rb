@@ -10,12 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_19_235953) do
+ActiveRecord::Schema.define(version: 2021_01_23_041042) do
 
-  create_table "users", force: :cascade do |t|
-    t.string "name"
+  create_table "diaries", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.float "weight"
+    t.float "body_fat_percentage"
+    t.date "post_date"
+    t.string "image1_id"
+    t.string "image2_id"
+    t.string "image3_id"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "name"
+    t.string "sex"
+    t.date "birthdate"
+    t.float "height"
+    t.float "target_weight"
+    t.float "target_body_fat_percentage"
+    t.text "introduce"
+    t.string "profile_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "diet_style1"
+    t.string "diet_style2"
+    t.string "diet_style3"
+    t.string "diet_style4"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

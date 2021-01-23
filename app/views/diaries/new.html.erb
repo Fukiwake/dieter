@@ -1,0 +1,47 @@
+<h1>日記</h1>
+<%= form_with model: @diary, local:true do |f| %>
+
+  <div class="field">
+    <%= f.label :post_date %><br />
+    <%= f.date_select :post_date %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :weight %><br />
+    <%= f.number_field :weight, autofocus: true %>kg
+  </div>
+  
+  <div class="field">
+    <%= f.label :body_fat_percentage %><br />
+    <%= f.number_field :body_fat_percentage %>%
+  </div>
+  
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_field :body %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :image1 %><br />
+    <%= f.attachment_field :image1 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :image2 %><br />
+    <%= f.attachment_field :image2 %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :image3 %><br />
+    <%= f.attachment_field :image3 %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "投稿" %>
+  </div>
+<% end %>
