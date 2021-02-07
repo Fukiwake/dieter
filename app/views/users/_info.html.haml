@@ -1,0 +1,9 @@
+%table.table
+  %tr= attachment_image_tag(user, :profile_image, size: "20x20", fallback: "l_e_others_500.jpg")
+  %tr
+    %th name
+    %th= user.name
+  %tr
+    %th introduce
+    %th= user.introduce
+

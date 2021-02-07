@@ -1,0 +1,7 @@
+- if diary.favorited_by?(current_user)
+  = link_to diary_favorites_path(diary.id), method: :delete, remote: true do
+    .favorite__destroy
+      ♥#{diary.favorites.count}
+- else
+  = link_to diary_favorites_path(diary.id), method: :post, remote: true do
+    ♡#{diary.favorites.count}

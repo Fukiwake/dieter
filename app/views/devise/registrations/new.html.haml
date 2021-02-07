@@ -1,0 +1,54 @@
+%h2 Sign up
+= form_with model: @user, url: user_registration_path, id: 'new_user', class: 'new_user', local: true do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name, autofocus: true
+  .field
+    = f.label :email
+    %br/
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+  .field
+    = f.label :password
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    %br/
+    = f.password_field :password, autocomplete: "new-password"
+  .field
+    = f.label :password_confirmation
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .field
+    = f.label :sex
+    %br/
+    = f.radio_button :sex, "男性"
+    男性 #{f.radio_button :sex, "女性"}女性
+  .field
+    = f.label :birthdate
+    %br/
+    = f.date_select :birthdate
+  .field
+    = f.label :height
+    %br/
+    = f.number_field :height
+  .field
+    = f.label :target_weight
+    %br/
+    = f.number_field :target_weight
+  .field
+    = f.check_box :diet_style1 ,{}, "true", "false"
+    = f.label :diet_style1, "筋トレメイン"
+  .field
+    = f.check_box :diet_style2 ,{}, "true", "false"
+    = f.label :diet_style2, "食事制限メイン"
+  .field
+    = f.check_box :diet_style3 ,{}, "true", "false"
+    = f.label :diet_style3, "長期継続"
+  .field
+    = f.check_box :diet_style4 ,{}, "true", "false"
+    = f.label :diet_style4, "短期集中"
+  .actions
+    = f.submit "Sign up"
+= render "devise/shared/links"

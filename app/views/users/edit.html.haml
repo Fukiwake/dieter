@@ -1,0 +1,9 @@
+%h1 ユーザープロフィール設定
+= form_with model:@user, local:true do |f|
+  .field
+    = f.label :name
+    = f.text_field :name, placeholder:"名前"
+  .field
+    = f.label :sex
+    = form.radio_button :gender, "男性"
+    男性 #{form.radio_button :gender, "女性"}女性

@@ -1,0 +1,8 @@
+コメント件数：#{diary.diary_comments.count}
+- diary.diary_comments.each do |diary_comment|
+  = attachment_image_tag diary.user, :profile_image, fallback: "l_e_others_500.jpg", size: "100x100"
+  = diary_comment.user.name
+  = diary_comment.created_at.strftime('%Y/%m/%d')
+  = diary_comment.comment
+  - if diary_comment.user = current_user
+    = link_to "削除", diary_diary_comment_path(diary_comment.diary, diary_comment), method: :delete, remote: true

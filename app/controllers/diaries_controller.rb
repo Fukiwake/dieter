@@ -14,10 +14,13 @@ class DiariesController < ApplicationController
   def edit
     @diary = Diary.find(params[:id])
   end
-  
+
   def update
+    diary = Diary.find(params[:id])
+    diary.update(diary_params)
+    redirect_to diary_path(diary.id)
   end
-  
+
   def destroy
     @diary = Diary.find(params[:id])
     @diary.destroy
@@ -26,6 +29,7 @@ class DiariesController < ApplicationController
 
   def show
     @diary = Diary.find(params[:id])
+    @diary_comment = DiaryComment.new
   end
 
   def index

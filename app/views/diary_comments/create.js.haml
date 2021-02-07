@@ -1,0 +1,3 @@
+$("#comments").html("#{ j(render "diary_comments/index", diary: @diary) }")
+$('#new-comment').html("#{ j(render "diary_comments/create", diary: @diary, diary_comment: @diary_comment) }")
+$("textarea").val('')
