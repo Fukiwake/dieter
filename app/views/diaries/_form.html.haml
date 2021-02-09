@@ -1,0 +1,17 @@
+= form_with model: diary, local:true do |f|
+  .field
+    = f.label :post_date
+    %br/
+    = f.date_select :post_date
+  .field
+    = f.label :weight
+    %br/
+    = f.number_field :weight
+    kg
+  .field
+    = f.label :body_fat_percentage
+    %br/
+    = f.number_field :body_fat_percentage
+    \%
+  .actions
+    = f.submit "投稿"

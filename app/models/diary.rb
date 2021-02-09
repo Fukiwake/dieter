@@ -12,5 +12,9 @@ class Diary < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
   
+  def self.looks(word)
+    @diaries = Diary.where("title LIKE ?", "%#{word}%")
+  end
+  
   validates :weight, presence: true
 end

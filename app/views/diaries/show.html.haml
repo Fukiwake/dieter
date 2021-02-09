@@ -1,17 +1,25 @@
-%h1 日記
-= @diary.title
-= @diary.body
-= @diary.weight
-= @diary.body_fat_percentage
-= @diary.post_date
-= attachment_image_tag @diary, :image1
-= attachment_image_tag @diary, :image2
-= attachment_image_tag @diary, :image3
-%div{:id => "favorites_buttons_#{@diary.id}"}
-  = render "favorites/favorite", diary: @diary
-- if @diary.user == current_user
-  = link_to "削除", diary_path(@diary.id), method: :delete
-#comments
-  = render "diary_comments/index", diary: @diary
-#new-comment
-  = render "diary_comments/create", diary: @diary, diary_comment: @diary_comment
+.container
+  .row
+    .col-md-3
+      %h2 User info
+      = render 'users/info', user: @user
+      %h2.mt-3 New book
+      = render 'form', book: @new_diary
+    .col-md-8.offset-md-1
+      %h1 日記
+      = @diary.title
+      = @diary.body
+      = @diary.weight
+      = @diary.body_fat_percentage
+      = @diary.post_date
+      = attachment_image_tag @diary, :image1
+      = attachment_image_tag @diary, :image2
+      = attachment_image_tag @diary, :image3
+      %div{:id => "favorites_buttons_#{@diary.id}"}
+        = render "favorites/favorite", diary: @diary
+      - if @diary.user == current_user
+        = link_to "削除", diary_path(@diary.id), method: :delete
+      #comments
+        = render "diary_comments/index", diary: @diary
+      #new-comment
+        = render "diary_comments/create", diary: @diary, diary_comment: @diary_comment

@@ -1,4 +1,5 @@
 class DiaryCommentsController < ApplicationController
+  before_action :authenticate_user!
 
   def create
     @diary_comment = DiaryComment.new

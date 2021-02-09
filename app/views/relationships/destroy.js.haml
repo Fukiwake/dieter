@@ -1,0 +1,3 @@
+$("#follow_bottons_#{@user.id}").html("#{ j(render "relationships/follow_form", user: @user) }")
+$(".followings_count").html("#{@user.followings.count}")
+$(".followers_count").html("#{@user.followers.count}")

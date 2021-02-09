@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
   
-  devise_for :users
+  get 'chats/show'
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   root 'homes#top'
-  resources :users, only: [:show, :edit]
+  get 'finder' => "finders#finder"
+  resources :users, only: [:show, :edit, :update, :index] do
+    resource :relationships, only: [:create, :destroy]
+    member do
+      get :followings, :followers
+    end
+  end
   resources :diaries do
     resources :diary_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
-    
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :chats, only: [:create]
+  get "chat/:id" => "chats#show", as: "chat"
 end

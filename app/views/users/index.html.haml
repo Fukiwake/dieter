@@ -1,0 +1,10 @@
+.container.px-5.px-sm-0
+  .row
+    - if user_signed_in?
+      .col-md-3
+        
+        %h3.mt-3 体重を記録する
+        = render 'diaries/form', diary: @diary
+    .col-md-9
+      %h2 Users
+      = render 'index',users: @users
