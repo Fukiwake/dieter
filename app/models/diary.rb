@@ -16,5 +16,4 @@ class Diary < ApplicationRecord
     @diaries = Diary.where("title LIKE ?", "%#{word}%")
   end
   
-  validates :weight, presence: true
 end

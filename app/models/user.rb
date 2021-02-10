@@ -30,36 +30,55 @@ class User < ApplicationRecord
   end
 
   def self.get_by_word(search_word)
-    @users = User.where("name LIKE ?", "%#{search_word}%")
+    where("name LIKE ?", "%#{search_word}%")
   end
 
   def self.get_by_sex(search_sex)
-    @users = User.where("sex = ?", "#{search_sex}")
+    where("sex = ?", "#{search_sex}")
   end
 
   def self.get_by_height(search_height)
-    from = search_height - 2
-    to = search_height + 2
-    @users = User.where(height: from..to)
+    from = search_height.to_i - 2
+    to = search_height.to_i + 2
+    where(height: from..to)
   end
 
   def self.get_by_weight(search_weight)
-    from = search_weight - 2
-    to = search_weight + 2
-    @users = User.where(weight: from..to)
+    from = search_weight.to_i - 2
+    to = search_weight.to_i + 2
+    where(weight: from..to)
   end
 
   def self.get_by_target_weight(search_target_weight)
-    from = search_target_weight - 2
-    to = search_target_weight + 2
-    @users = User.where(target_weight: from..to)
+    from = search_target_weight.to_i - 2
+    to = search_target_weight.to_i + 2
+    where(target_weight: from..to)
   end
-  
+
   def self.get_by_age(search_age)
-    from_age = search_age - 2
-    to_age = search_age + 2
-    from_birthday_ymd = 
-    @users = User.where(target_weight: from..to)
+    from_age = search_age.to_i - 2
+    to_age = search_age.to_i + 2
+    from_year = Date.today.strftime("%Y").to_i - to_age
+    to_year = Date.today.strftime("%Y").to_i - from_age
+    from = from_year.to_s
+    to = to_year.to_s
+    where(birthyear: from..to)
+  end
+
+  def self.get_by_style1(search_style)
+    where("diet_style1 = ?", search_style)
+  end
+
+  def self.get_by_style2(search_style)
+    where("diet_style2 = ?", search_style)
+  end
+
+  def self.get_by_style3(search_style)
+    where("diet_style3 = ?", search_style)
+  end
+
+  def self.get_by_style4(search_style)
+    where("diet_style4 = ?", search_style)
   end
 
   validates :name, length: { maximum: 10, minimum: 2 }

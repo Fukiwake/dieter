@@ -14,6 +14,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super do
       resource.update(confirmed_at: Time.now.utc) 
     end
+    diary = Diary.new(weight: 80, title: "auto")
+    diary.save
   end
 
   # GET /resource/edit

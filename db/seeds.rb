@@ -11,22 +11,24 @@
   name = Faker::Lorem.characters(number: 10)
   email = Faker::Internet.email
   User.create!(
-  email: email, 
+  email: email,
   password: "testpass",
-  name: name, 
-  sex: "女", 
-  birthdate: "2021-01-23", 
-  height: 150, 
-  target_weight: 50, 
-  target_body_fat_percentage: nil, 
-  introduce: "よろしくおねがいします", 
+  name: name,
+  sex: rand(1..2),
+  birthyear: rand(1960..2015),
+  birthdate: "01-23",
+  height: rand(120..190),
+  weight: rand(30..100),
+  target_weight: rand(30..100),
+  target_body_fat_percentage: rand(5..35),
+  introduce: "よろしくおねがいします",
   profile_image_id: nil,
-  diet_style1: nil,
-  diet_style2: nil,
-  diet_style3: "true",
-  diet_style4: "true",
+  diet_style1: rand(1..2),
+  diet_style2: rand(1..2),
+  diet_style3: rand(1..2),
+  diet_style4: rand(1..2),
   confirmed_at: "2021-02-09 01:31:53"
-              )
+  )
 end
 
 Diary.create!(
@@ -34,7 +36,7 @@ Diary.create!(
   body: "test",
   weight: "80",
   body_fat_percentage: "25",
-  post_date: "2021-01-23", 
+  post_date: "2021-01-23",
   image1_id: nil,
   image2_id: nil,
   image3_id: nil,
@@ -46,7 +48,7 @@ Diary.create!(
   body: "test2",
   weight: "60",
   body_fat_percentage: "30",
-  post_date: "2021-01-23", 
+  post_date: "2021-01-23",
   image1_id: nil,
   image2_id: nil,
   image3_id: nil,

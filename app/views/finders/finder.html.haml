@@ -1,3 +1,30 @@
+
+= form_with url: finder_path, method: :get, local: :true do |f|
+  = f.search_field :word, value: params[:word]
+  = f.label :sex
+  = f.radio_button :sex, "1", checked: params[:sex]=="1"
+  男性
+  = f.radio_button :sex, "2", checked: params[:sex]=="2"
+  女性
+  = f.radio_button :sex, "", checked: params[:sex]==""||params[:sex]!="1"&&params[:sex]!="2"
+  指定なし
+  = f.label :age
+  = f.number_field :age, value: params[:age]
+  = f.label :height
+  = f.number_field :height, value: params[:height]
+  = f.label :weight
+  = f.number_field :weight, value: params[:weight]
+  = f.label :target_weight
+  = f.number_field :target_weight, value: params[:target_weight]
+  = f.check_box :diet_style1 ,{checked: params[:diet_style1]=="1"}, "1", "2"
+  = f.label :diet_style1, "筋トレメイン"
+  = f.check_box :diet_style2 ,{checked: params[:diet_style2]=="1"}, "1", "2"
+  = f.label :diet_style2, "食事制限メイン"
+  = f.check_box :diet_style3 ,{checked: params[:diet_style3]=="1"}, "1", "2"
+  = f.label :diet_style3, "長期継続"
+  = f.check_box :diet_style4 ,{checked: params[:diet_style4]=="1"}, "1", "2"
+  = f.label :diet_style4, "短期集中"
+  = f.submit "検索"
 %h2 users
 = render "users/index", users: @users
 %h2 diaries
