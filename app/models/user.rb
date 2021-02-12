@@ -80,6 +80,12 @@ class User < ApplicationRecord
   def self.get_by_style4(search_style)
     where("diet_style4 = ?", search_style)
   end
+  
+  def limit_date(dates)
+    if dates[0]  <　dates.last.prev_year
+      @dates = dates.where(post_date)
+    end
+  end
 
   validates :name, length: { maximum: 10, minimum: 2 }
 end

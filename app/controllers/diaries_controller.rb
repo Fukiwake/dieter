@@ -9,8 +9,7 @@ class DiariesController < ApplicationController
     @diary = Diary.new(diary_params)
     @diary.user_id = current_user.id
     @diary.save
-    current_user.update(weight: @diary.weight)
-    redirect_to diaries_path
+    redirect_to user_path(current_user)
   end
 
   def edit

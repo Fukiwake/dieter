@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-100.times do |n|
+50.times do |n|
   name = Faker::Lorem.characters(number: 10)
   email = Faker::Internet.email
   User.create!(
@@ -31,26 +31,21 @@
   )
 end
 
-Diary.create!(
-  title: "test",
-  body: "test",
-  weight: "80",
-  body_fat_percentage: "25",
-  post_date: "2021-01-23",
-  image1_id: nil,
-  image2_id: nil,
-  image3_id: nil,
-  user_id: 1
-)
 
-Diary.create!(
-  title: "test2",
-  body: "test2",
-  weight: "60",
-  body_fat_percentage: "30",
-  post_date: "2021-01-23",
-  image1_id: nil,
-  image2_id: nil,
-  image3_id: nil,
-  user_id: 2
-)
+50.times do |n|
+  month = rand(1..2)
+  date = rand(1..28)
+  Diary.create!(
+    title: "test",
+    body: "test",
+    weight: rand(60..90),
+    body_fat_percentage: rand(15..30),
+    post_date: "2021-#{month}-#{date}",
+    image1_id: nil,
+    image2_id: nil,
+    image3_id: nil,
+    user_id: "51"
+  )
+end
+
+

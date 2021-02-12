@@ -2,11 +2,11 @@
   .row
     .col-md-3
       %h2.mt-3 体重を記録する
-      = render 'diaries/form', diary: @diary
+      = render "diaries/form", diary: @diary
       %h2 User info
-      = render 'info', user: @user
+      = render "info", user: @user
     .col-md-8.offset-md-1
       %h2　記録
-      = line_chart @deta
-      = render 'diaries/index',diaries: @diaries
+      = render "graph"
+      = render "diaries/index",diaries: @diaries
 
